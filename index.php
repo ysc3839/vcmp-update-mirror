@@ -26,9 +26,24 @@
 <title>VCMP Update Mirror</title>
 </head>
 <body>
-<div class="mdl-cell mdl-cell--12-col mdl-typography--text-center">
-<span class="mdl-color-text--primary"><h1>VCMP Update Mirror</h1>
-<h3>In progress...</h3></span>
+<div class="mdl-layout mdl-js-layout mdl-typography--text-center">
+	<header class="mdl-layout__header mdl-layout__header--scroll">
+		<div class="mdl-layout__header-row">
+			<!-- Title -->
+			<span class="mdl-layout-title">VCMP Update Mirror</span>
+			<!-- Add spacer, to align navigation to the right -->
+			<div class="mdl-layout-spacer"></div>
+			<!-- Navigation -->
+			<nav class="mdl-navigation">
+				<!--a class="mdl-navigation__link" href="">Link</a>
+				<a class="mdl-navigation__link" href="">Link</a>
+				<a class="mdl-navigation__link" href="">Link</a>
+				<a class="mdl-navigation__link" href="">Link</a-->
+			</nav>
+		</div>
+	</header>
+<main class="mdl-layout__content">
+<h3 class="mdl-color-text--primary">In progress...</h3>
 <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate mdl-shadow--4dp progress"></div>
 <div class="mdl-color-text--grey-600 inline-block"><table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 	<thead>
@@ -61,6 +76,7 @@
 	</tbody>
 </table></div>
 <div class="footer"><a target="_blank" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://github.com/ysc3839/vcmp-update-mirror">View on GitHub</a></div>
+</main>
 </div>
 </body>
 </html>
