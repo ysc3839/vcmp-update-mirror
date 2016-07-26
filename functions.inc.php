@@ -3,7 +3,9 @@ define('PASSWORD', '');
 
 global $db;
 
-mkdir('./files/');
+if (!file_exists('./files/'))
+	mkdir('./files/');
+
 if ($db = new SQLite3('./files/.database.db'))
 {
 	$db->exec('CREATE TABLE IF NOT EXISTS versions (version TEXT NOT NULL UNIQUE, build INTEGER NOT NULL)');
