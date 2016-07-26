@@ -1,11 +1,12 @@
 <?php
 define('PASSWORD', '');
 
-global $db;
+date_default_timezone_set('UTC');
 
 if (!file_exists('./files/'))
 	mkdir('./files/');
 
+global $db;
 if ($db = new SQLite3('./files/.database.db'))
 {
 	$db->exec('CREATE TABLE IF NOT EXISTS versions (version TEXT NOT NULL UNIQUE, build INTEGER NOT NULL)');

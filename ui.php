@@ -55,7 +55,7 @@
 	</thead>
 	<tbody>
 	<?php
-	$query = $db->query("SELECT * FROM versions");
+	$query = $db->query('SELECT * FROM versions');
 	//var_dump($query);
 	if ($query)
 	{
