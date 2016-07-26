@@ -23,7 +23,7 @@ location / {
 
     ## Deny hidden files
     location ^~ /. {
-        return 403;
+        deny all;
     }
 
     ## Regular PHP processing.
@@ -38,6 +38,7 @@ location / {
     ## Static files
     location ~* \.(?:css|gif|htc|ico|js|jpe?g|png|swf|ogg|pdf|pptx?|7z)$ {
         expires max;
+        access_log off;
         log_not_found off;
         ## No need to bleed constant updates. Send the all shebang in one
         ## fell swoop.
