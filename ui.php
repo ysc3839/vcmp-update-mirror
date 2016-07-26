@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 <link rel="stylesheet" href="/mdl/material.min.css">
 <script src="/mdl/material.min.js"></script>
 <style>
@@ -26,20 +25,20 @@
 <title>VCMP Update Mirror</title>
 </head>
 <body>
-<div class="mdl-layout mdl-js-layout mdl-typography--text-center">
-	<header class="mdl-layout__header mdl-layout__header--scroll">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-typography--text-center">
+	<header class="mdl-layout__header">
 		<div class="mdl-layout__header-row">
 			<!-- Title -->
 			<span class="mdl-layout-title">VCMP Update Mirror</span>
 			<!-- Add spacer, to align navigation to the right -->
 			<div class="mdl-layout-spacer"></div>
 			<!-- Navigation -->
-			<nav class="mdl-navigation">
-				<!--a class="mdl-navigation__link" href="">Link</a>
+			<!--nav class="mdl-navigation">
 				<a class="mdl-navigation__link" href="">Link</a>
 				<a class="mdl-navigation__link" href="">Link</a>
-				<a class="mdl-navigation__link" href="">Link</a-->
-			</nav>
+				<a class="mdl-navigation__link" href="">Link</a>
+				<a class="mdl-navigation__link" href="">Link</a>
+			</nav-->
 		</div>
 	</header>
 <main class="mdl-layout__content">
@@ -55,24 +54,23 @@
     </tr>
 	</thead>
 	<tbody>
-	<tr>
-    	<td class="mdl-data-table__cell--non-numeric">04rel004</td>
-    	<td class="mdl-data-table__cell--non-numeric">578F0CAD</td>
-    	<td class="mdl-data-table__cell--non-numeric">2016-07-20 07:07:31</td>
-		<td><a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" download=""><i class="material-icons icon-download"></i></a></td>
-    </tr>
-	<tr>
-    	<td class="mdl-data-table__cell--non-numeric">04rel003</td>
-    	<td class="mdl-data-table__cell--non-numeric">571C093D</td>
-    	<td class="mdl-data-table__cell--non-numeric">2016-04-24 01:04:46</td>
-		<td><a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" download=""><i class="material-icons icon-download"></i></a></td>
-    </tr>
-	<tr>
-    	<td class="mdl-data-table__cell--non-numeric">04rel002</td>
-    	<td class="mdl-data-table__cell--non-numeric">55986E38</td>
-    	<td class="mdl-data-table__cell--non-numeric">2015-07-05 01:07:37</td>
-		<td><a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" download=""><i class="material-icons icon-download"></i></a></td>
-    </tr>
+	<?php
+	$query = $db->query("SELECT * FROM versions");
+	//var_dump($query);
+	if ($query)
+	{
+		for ($i = 0; $item = $query->fetchArray(SQLITE3_ASSOC); $i++)
+        {
+			$buildhex = strtoupper(dechex($item['build']));
+			echo '<tr>';
+			echo '<td class="mdl-data-table__cell--non-numeric">' . $item['version'] . '</td>';
+			echo '<td class="mdl-data-table__cell--non-numeric">' . $buildhex . '</td>';
+			echo '<td class="mdl-data-table__cell--non-numeric">' . date("Y-m-d H:i:s", $item['build']) . '</td>';
+			echo '<td><a href="/files/build' . $buildhex . '.7z" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" download=""><i class="material-icons icon-download"></i></a></td>';
+			echo '</tr>';
+        }
+	}
+	?>
 	</tbody>
 </table></div>
 <div class="footer"><a target="_blank" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://github.com/ysc3839/vcmp-update-mirror">View on GitHub</a></div>
