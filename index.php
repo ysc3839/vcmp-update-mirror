@@ -1,5 +1,5 @@
 <?php
-include 'functions.inc.php';
+require_once('functions.inc.php');
 
 if ($_SERVER['REQUEST_URI'] == '/check')
 {
@@ -38,13 +38,15 @@ if ($_SERVER['REQUEST_URI'] == '/check')
 					array_push($updateList, $result['version']);
 			}
 
-			if (($verstotest = GetSetting('verstotest')) != null)
-			{
+			$verstotest = GetSetting('verstotest');
+			if ($verstotest == null)
+				$verstotest = [];
+			else
 				$verstotest = explode(',', $verstotest);
-				$unknownVers = array_diff($versions, $knownVersions);
-				$verstotest = array_unique(array_merge($verstotest, $unknownVers));
-				SetSetting('verstotest', implode(',', $verstotest));
-			}
+			$unknownVers = array_diff($versions, $knownVersions);
+			$verstotest = array_unique(array_merge($verstotest, $unknownVers));
+			SetSetting('verstotest', implode(',', $verstotest));
+
 			echo implode('|', $updateList);
 			exit();
 		}
@@ -94,5 +96,7 @@ else if ($_SERVER['REQUEST_URI'] == '/download')
 	http_response_code(404);
 	exit();
 }
+else if ($_SERVER['REQUEST_URI'] == '/cron')
+	require('cron.php');
 else
-	include 'ui.php';
+	require('ui.php');
