@@ -3,7 +3,7 @@ define('PASSWORD', '');
 define('REMOTE_PASSWORD', '');
 define('CURL_PROXYTYPE', null);
 define('CURL_PROXY', null);
-define('CHECK_TIME', 600);
+define('CHECK_TIME', 0);
 
 date_default_timezone_set('UTC');
 
