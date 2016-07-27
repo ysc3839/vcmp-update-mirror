@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="/mdl/material.min.css">
 <script src="/mdl/material.min.js"></script>
 <style>
+main {
+	margin: 24px;
+}
 .progress {
 	margin: auto;
 	width: 50%;
@@ -19,6 +22,9 @@
 }
 .footer {
 	padding-top: 5px;
+}
+.maintainer {
+	color: #9e9e9e;
 }
 </style>
 <title>VCMP Update Mirror</title>
@@ -72,8 +78,15 @@
 	?>
 	</tbody>
 </table></div>
-<div class="footer"><a target="_blank" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://github.com/ysc3839/vcmp-update-mirror">View on GitHub</a></div>
 </main>
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">Maintained by <span class="maintainer">ysc3839</span></div>
+    <ul class="mdl-mini-footer__link-list">
+      <li><a target="_blank" href="https://github.com/ysc3839/vcmp-update-mirror">View on GitHub</a></li>
+    </ul>
+  </div>
+</footer>
 </div>
 </body>
 </html>
