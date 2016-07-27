@@ -64,7 +64,7 @@ main {
 	//var_dump($query);
 	if ($query)
 	{
-		for ($i = 0; $item = $query->fetchArray(SQLITE3_ASSOC); $i++)
+		while ($item = $query->fetchArray(SQLITE3_ASSOC))
 		{
 			$buildhex = strtoupper(dechex($item['build']));
 			echo '<tr>';
