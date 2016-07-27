@@ -4,7 +4,7 @@ require_once('functions.inc.php');
 
 $currentTime = time();
 $lastCheck = (int)GetSetting('lastCheck');
-if ($currentTime - $lastCheck < CHECK_TIME) // 10 Minutes
+if ($currentTime - $lastCheck > CHECK_TIME)
 {
 	SetSetting('lastCheck', $currentTime);
 	echo 'Current time: ' . date('Y-m-d H:i:s', $currentTime) . PHP_EOL;
