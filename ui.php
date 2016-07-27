@@ -5,9 +5,6 @@
 <link rel="stylesheet" href="/mdl/material.min.css">
 <script src="/mdl/material.min.js"></script>
 <style>
-main {
-	margin: 24px;
-}
 .progress {
 	margin: auto;
 	width: 50%;
@@ -26,6 +23,9 @@ main {
 .maintainer {
 	color: #9e9e9e;
 }
+.table-div {
+	padding-top: 24px;
+}
 </style>
 <title>VCMP Update Mirror</title>
 </head>
@@ -33,23 +33,12 @@ main {
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-typography--text-center">
 	<header class="mdl-layout__header">
 		<div class="mdl-layout__header-row">
-			<!-- Title -->
 			<span class="mdl-layout-title">VCMP Update Mirror</span>
-			<!-- Add spacer, to align navigation to the right -->
 			<div class="mdl-layout-spacer"></div>
-			<!-- Navigation -->
-			<!--nav class="mdl-navigation">
-				<a class="mdl-navigation__link" href="">Link</a>
-				<a class="mdl-navigation__link" href="">Link</a>
-				<a class="mdl-navigation__link" href="">Link</a>
-				<a class="mdl-navigation__link" href="">Link</a>
-			</nav-->
 		</div>
 	</header>
 <main class="mdl-layout__content">
-<h3 class="mdl-color-text--primary">In progress...</h3>
-<div class="mdl-progress mdl-js-progress mdl-progress__indeterminate mdl-shadow--4dp progress"></div>
-<div class="mdl-color-text--grey-600 inline-block"><table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+<div class="mdl-color-text--grey-600 inline-block table-div"><table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 	<thead>
 	<tr>
 		<th class="mdl-data-table__cell--non-numeric">Version</th>
@@ -60,8 +49,7 @@ main {
 	</thead>
 	<tbody>
 	<?php
-	$query = $db->query('SELECT * FROM versions');
-	//var_dump($query);
+	$query = $db->query('SELECT * FROM versions ORDER BY build DESC');
 	if ($query)
 	{
 		while ($item = $query->fetchArray(SQLITE3_ASSOC))

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_URI'] == '/check')
 		$json = json_decode($_POST['json'], true);
 		if (!isset($json['password']) || !isset($json['versions']))
 			break;
-		
+
 		if ($json['password'] != PASSWORD)
 		{
 			http_response_code(401);
@@ -79,14 +79,14 @@ else if ($_SERVER['REQUEST_URI'] == '/download')
 
 		$version = $db->escapeString($json['version']);
 
-		$query = $db->query("SELECT build FROM versions WHERE version='" . $version . "'");
+		$query = $db->query("SELECT build FROM versions WHERE version='$version'");
 		if ($query && ($result = $query->fetchArray(SQLITE3_NUM)) != null)
 		{
 			$fileName = 'build' . dechex($result[0]) . '.7z';
 			if (file_exists('./files/' . $fileName))
 			{
 				header('Content-Type: application/octet-stream');
-				header('Content-Disposition: attachment; filename="' . $fileName .'"');
+				header("Content-Disposition: attachment; filename=\"$fileName\"");
 				readfile('./files/' . $fileName);
 				exit();
 			}
@@ -97,6 +97,7 @@ else if ($_SERVER['REQUEST_URI'] == '/download')
 	exit();
 }
 else if ($_SERVER['REQUEST_URI'] == '/cron')
-	require('cron.php');
+	DownloadVCMPGame('04rel003');
+	//require('cron.php');
 else
 	require('ui.php');
