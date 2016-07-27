@@ -14,9 +14,8 @@
 	display: inline-block;
 }
 .icon-download {
-	background-size: contain;
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAV0lEQVR4Ae3QMQ7EQAzDQD2dP3dKF8E1BpjioHEvYjf1kZof10ADDTRgBsgcDjeB+wrcjyJHWPMLa35hzS+s+YU1v3Dn3wkiwJ3fBBER8hdqbncMNFBVDxodwlpdA7aUAAAAAElFTkSuQmCC");
-    height: 24px;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAV0lEQVR4Ae3QMQ7EQAzDQD2dP3dKF8E1BpjioHEvYjf1kZof10ADDTRgBsgcDjeB+wrcjyJHWPMLa35hzS+s+YU1v3Dn3wkiwJ3fBBER8hdqbncMNFBVDxodwlpdA7aUAAAAAElFTkSuQmCC") center / cover;
+	height: 24px;
 }
 .footer {
 	padding-top: 5px;
@@ -47,11 +46,11 @@
 <div class="mdl-color-text--grey-600 inline-block"><table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 	<thead>
 	<tr>
-    	<th class="mdl-data-table__cell--non-numeric">Version</th>
-    	<th class="mdl-data-table__cell--non-numeric">Build</th>
-    	<th class="mdl-data-table__cell--non-numeric">Date</th>
+		<th class="mdl-data-table__cell--non-numeric">Version</th>
+		<th class="mdl-data-table__cell--non-numeric">Build</th>
+		<th class="mdl-data-table__cell--non-numeric">Date</th>
 		<th>Download</th>
-    </tr>
+	</tr>
 	</thead>
 	<tbody>
 	<?php
@@ -60,15 +59,15 @@
 	if ($query)
 	{
 		for ($i = 0; $item = $query->fetchArray(SQLITE3_ASSOC); $i++)
-        {
+		{
 			$buildhex = strtoupper(dechex($item['build']));
 			echo '<tr>';
 			echo '<td class="mdl-data-table__cell--non-numeric">' . $item['version'] . '</td>';
 			echo '<td class="mdl-data-table__cell--non-numeric">' . $buildhex . '</td>';
-			echo '<td class="mdl-data-table__cell--non-numeric">' . date("Y-m-d H:i:s", $item['build']) . '</td>';
+			echo '<td class="mdl-data-table__cell--non-numeric">' . date('Y-m-d H:i:s', $item['build']) . '</td>';
 			echo '<td><a href="/files/build' . $buildhex . '.7z" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" download=""><i class="material-icons icon-download"></i></a></td>';
 			echo '</tr>';
-        }
+		}
 	}
 	?>
 	</tbody>
