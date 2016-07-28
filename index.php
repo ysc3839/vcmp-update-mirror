@@ -1,7 +1,8 @@
 <?php
 require_once('functions.inc.php');
 
-if ($_SERVER['REQUEST_URI'] == '/check')
+$URI = str_replace('//', '/', $_SERVER['REQUEST_URI']);
+if ($URI == '/check')
 {
 	if ($_SERVER['REQUEST_METHOD'] != 'POST')
 	{
@@ -55,7 +56,7 @@ if ($_SERVER['REQUEST_URI'] == '/check')
 	http_response_code(400);
 	exit();
 }
-else if ($_SERVER['REQUEST_URI'] == '/download')
+else if ($URI == '/download')
 {
 	if ($_SERVER['REQUEST_METHOD'] != 'POST')
 	{
@@ -96,7 +97,7 @@ else if ($_SERVER['REQUEST_URI'] == '/download')
 	http_response_code(404);
 	exit();
 }
-else if ($_SERVER['REQUEST_URI'] == '/cron')
+else if ($URI == '/cron')
 	require('cron.php');
 else
 	require('ui.php');
