@@ -42,6 +42,8 @@ if ($currentTime - $lastCheck > CHECK_TIME)
 		$updates = explode('|', $updates);
 
 		echo 'Version to update: ' . print_r($updates, true) . PHP_EOL;
+
+		$failed = [];
 		foreach ($updates as $version)
 		{
 			echo "Start downloading '$version'." . PHP_EOL;
@@ -60,7 +62,8 @@ if ($currentTime - $lastCheck > CHECK_TIME)
 				echo "Version '$version' failed to download!" . PHP_EOL;
 			}
 		}
-		SetSetting('verstotest', implode(',', $failed));
+		if ($failed)
+			SetSetting('verstotest', implode(',', $failed));
 	}
 	else
 		echo 'No update, exit.' . PHP_EOL;
