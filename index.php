@@ -84,7 +84,8 @@ else if ($URI == '/download')
 		if ($query && ($result = $query->fetchArray(SQLITE3_NUM)) != null)
 		{
 			$fileName = 'build' . strtoupper(dechex($result[0])) . '.7z';
-			if (file_exists('./files/' . $fileName))
+			$file = './files/' . $fileName;
+			if (file_exists($file))
 			{
 				header('Content-Description: File Transfer');
 				header('Content-Type: application/octet-stream');
@@ -93,7 +94,7 @@ else if ($URI == '/download')
 				header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 				header('Pragma: public');
 				header('Content-Length: ' . filesize($file));
-				readfile('./files/' . $fileName);
+				readfile($file);
 				exit();
 			}
 		}
