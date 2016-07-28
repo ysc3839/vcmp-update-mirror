@@ -86,8 +86,13 @@ else if ($URI == '/download')
 			$fileName = 'build' . strtoupper(dechex($result[0])) . '.7z';
 			if (file_exists('./files/' . $fileName))
 			{
+				header('Content-Description: File Transfer');
 				header('Content-Type: application/octet-stream');
 				header("Content-Disposition: attachment; filename=\"$fileName\"");
+				header('Expires: 0');
+				header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+				header('Pragma: public');
+				header('Content-Length: ' . filesize($file));
 				readfile('./files/' . $fileName);
 				exit();
 			}
