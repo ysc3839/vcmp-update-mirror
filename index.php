@@ -2,8 +2,6 @@
 require_once('functions.inc.php');
 
 $URI = str_replace('//', '/', $_SERVER['REQUEST_URI']);
-var_dump($_SERVER['REQUEST_URI']);
-var_dump($URI);
 if ($URI == '/check')
 {
 	if ($_SERVER['REQUEST_METHOD'] != 'POST')
