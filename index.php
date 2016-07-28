@@ -65,16 +65,13 @@ else if ($URI == '/download')
 	}
 
 	do {
-		echo 'json1';
 		if (!isset($_POST['json']))
 			break;
 
-		echo 'json2';
 		$json = json_decode($_POST['json'], true);
 		if (!isset($json['password']) || !isset($json['version']))
 			break;
 
-		echo 'password';
 		if ($json['password'] != PASSWORD)
 		{
 			http_response_code(401);
@@ -83,12 +80,11 @@ else if ($URI == '/download')
 
 		$version = $db->escapeString($json['version']);
 
-		echo 'query';
 		$query = $db->query("SELECT build FROM versions WHERE version='$version'");
 		if ($query && ($result = $query->fetchArray(SQLITE3_NUM)) != null)
 		{
-			echo 'fileName';
 			$fileName = 'build' . dechex($result[0]) . '.7z';
+			echo 'fileName' . $fileName;
 			if (file_exists('./files/' . $fileName))
 			{
 				header('Content-Type: application/octet-stream');
