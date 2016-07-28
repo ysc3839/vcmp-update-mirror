@@ -97,7 +97,6 @@ else if ($_SERVER['REQUEST_URI'] == '/download')
 	exit();
 }
 else if ($_SERVER['REQUEST_URI'] == '/cron')
-	DownloadVCMPGame('04rel003');
-	//require('cron.php');
+	require('cron.php');
 else
 	require('ui.php');
