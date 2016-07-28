@@ -83,8 +83,7 @@ else if ($URI == '/download')
 		$query = $db->query("SELECT build FROM versions WHERE version='$version'");
 		if ($query && ($result = $query->fetchArray(SQLITE3_NUM)) != null)
 		{
-			$fileName = 'build' . dechex($result[0]) . '.7z';
-			echo 'fileName' . $fileName;
+			$fileName = 'build' . strtoupper(dechex($result[0])) . '.7z';
 			if (file_exists('./files/' . $fileName))
 			{
 				header('Content-Type: application/octet-stream');
