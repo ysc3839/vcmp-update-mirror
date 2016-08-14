@@ -30,7 +30,7 @@ if ($currentTime - $lastCheck > CHECK_TIME)
 
 	if (!$versionsToCheck)
 	{
-		echo 'No version to check, exit.' . PHP_EOL;
+		echo 'No version to check, exit.' . PHP_EOL . PHP_EOL;
 		exit();
 	}
 
@@ -64,11 +64,13 @@ if ($currentTime - $lastCheck > CHECK_TIME)
 		}
 		if ($failed)
 			SetSetting('verstotest', implode(',', $failed));
+		
+		echo PHP_EOL;
 	}
 	else
-		echo 'No update, exit.' . PHP_EOL;
+		echo 'No update, exit.' . PHP_EOL . PHP_EOL;
 }
 else
 {
-	//echo 'Last update no longer than 10 minutes, exit.' . PHP_EOL;
+	//echo 'Last update no longer than 10 minutes, exit.' . PHP_EOL . PHP_EOL;
 }
